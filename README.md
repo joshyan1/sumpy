@@ -1,6 +1,6 @@
 # sumpy
 
-Here's my extremely dumbed down version of numpy in C++, built without external dependencies, and from scratch.
+Here's my small, less efficient, and likely incorrect implementation of numpy in C++, built without external dependencies, and from scratch.
 
 Hopefully, I learn some C++ through this.
 
