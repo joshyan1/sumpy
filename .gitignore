@@ -1,1 +1,11 @@
+# Builds
+build/
+
+# IDE
 .vscode/
+.idea/
+
+# Compiled
+*.o
+*.out
+sumpy_run
