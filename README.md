@@ -1,8 +1,8 @@
 # sumpy
 
-Here's my small, less efficient, and likely incorrect implementation of numpy in C++, built without external dependencies, and from scratch.
+here's my small, less efficient, and likely incorrect implementation of numpy in C++, built without external dependencies, and from scratch.
 
-Hopefully, I learn some C++ through this.
+hopefully, I learn some C++ through this.
 
 ## build and run
 
@@ -17,23 +17,23 @@ cmake --build build
 
 ## tests
 
-Run tests in either way
+run tests in either way
 
-1. Run tests directly (with detailed output):
+1. run tests directly (with detailed output):
 ```shell
 ./build/tests/sumpy_tests
 ```
 
-2. Run tests using CTest (summary output):
+2. run tests using CTest (summary output):
 ```shell
 cd build
 ctest
 ```
 
-## Functionalities
+## functionalities
 
-### 1. Array Creation and Initialization
-- [x] Basic array construction (1D and 2D)
+### 1. array creation and initialization
+- [x] basic array construction (1d and 2d)
 - [x] zeros(shape)
 - [x] ones(shape)
 - [x] eye(n)
@@ -41,47 +41,47 @@ ctest
 - [x] linspace(start, stop, num)
 - [ ] full(shape, value)
 
-### 2. Indexing and Slicing
-- [x] Integer indexing
-- [x] Bounds checking
-- [ ] Row/column slicing (e.g., arr(0) for first row)
-- [ ] Range slicing (start:stop:step)
-- [ ] View-based slicing (no data copying)
+### 2. indexing and slicing
+- [x] integer indexing
+- [x] bounds checking
+- [ ] row/column slicing (e.g., arr(0) for first row)
+- [ ] range slicing (start:stop:step)
+- [ ] view-based slicing (no data copying)
 
-### 3. Basic Arithmetic (Elementwise)
-- [ ] Addition (+)
-- [ ] Subtraction (-)
-- [ ] Multiplication (*)
-- [ ] Division (/)
-- [ ] Scalar operations
-- [ ] Unary operations (-arr, abs(arr))
+### 3. basic arithmetic (elementwise)
+- [ ] addition (+)
+- [ ] subtraction (-)
+- [ ] multiplication (*)
+- [ ] division (/)
+- [ ] scalar operations
+- [ ] unary operations (-arr, abs(arr))
 
-### 4. Reductions and Aggregations
+### 4. reductions and aggregations
 - [ ] sum()
 - [ ] min(), max()
 - [ ] mean()
 - [ ] std()
-- [ ] Axis-based reductions (e.g., sum(axis=0))
+- [ ] axis-based reductions (e.g., sum(axis=0))
 
-### 5. Broadcasting
-- [ ] Shape compatibility checking
-- [ ] Broadcasted arithmetic operations
-- [ ] Efficient memory handling for broadcasts
+### 5. broadcasting
+- [ ] shape compatibility checking
+- [ ] broadcasted arithmetic operations
+- [ ] efficient memory handling for broadcasts
 
-### 6. Shape Manipulation
+### 6. shape manipulation
 - [ ] reshape()
 - [ ] transpose()
 - [ ] flatten()
 - [ ] ravel()
 
-### 7. Memory Management
-- [ ] Shared pointer implementation
-- [ ] View-based operations
-- [ ] Copy-on-write optimization
+### 7. memory management
+- [ ] shared pointer implementation
+- [ ] view-based operations
+- [ ] copy-on-write optimization
 
-### 8. More Stuff
-- [ ] Boolean masking
-- [ ] Fancy indexing
-- [ ] Matrix multiplication (matmul/dot)
-- [ ] SIMD optimizations
-- [ ] Parallel operations
+### 8. more stuff
+- [ ] boolean masking
+- [ ] fancy indexing
+- [ ] matrix multiplication (matmul/dot)
+- [ ] simd optimizations
+- [ ] parallel operations
