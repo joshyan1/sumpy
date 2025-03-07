@@ -29,3 +29,18 @@ Run tests in either way
 cd build
 ctest
 ```
+
+## functionalities
+
+- [x] 1D and 2D array construction and initialization
+- [x] Factory functions (zeros, ones, eye, arange, linspace)
+- [x] Array indexing
+- [x] Array printing and shape display
+- [ ] Array operations (addition, subtraction, multiplication, division)
+- [ ] Array functions (sum, mean, max, min, etc.)
+- [ ] Broadcasting
+- [ ] Dot product
+- [ ] Matrix multiplication
+- [ ] Transpose
+- [ ] Reshape
+- [ ] Flatten
