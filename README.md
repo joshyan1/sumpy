@@ -6,28 +6,22 @@ hopefully, I learn some C++ through this.
 
 ## build and run
 
-```shell
-# Build the project
-cmake -B build
-cmake --build build
+```bash
+brew install fmt
 
-# Run the main program
-./build/main
+# Install pybind11 (macOS)
+brew install pybind11
+
+# Or using pip
+pip install pybind11
 ```
 
-## tests
-
-run tests in either way
-
-1. run tests directly (with detailed output):
-```shell
-./build/tests/sumpy_tests
-```
-
-2. run tests using CTest (summary output):
-```shell
+```bash
+mkdir -p build
 cd build
-ctest
+cmake ..
+make
+cd ..
 ```
 
 ## functionalities
@@ -39,7 +33,7 @@ ctest
 - [x] eye(n)
 - [x] arange(start, stop, step)
 - [x] linspace(start, stop, num)
-- [ ] full(shape, value)
+- [x] full(shape, value)
 
 ### 2. indexing and slicing
 - [x] integer indexing

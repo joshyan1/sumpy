@@ -9,3 +9,9 @@ build/
 *.o
 *.out
 sumpy_run
+
+# Python Compiled
+__pycache__/
+
+# Virtual Environment
+.venv/
