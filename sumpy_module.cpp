@@ -18,8 +18,7 @@ void declare_sumarray(py::module &m, const std::string &typestr) {
                 idx_vec.push_back(py::cast<int>(item));
             }
             
-            // Convert vector to initializer_list using a workaround
-            // We need to use a lambda to capture the vector and pass its elements as an initializer_list
+            // TODO: make dynamic for n-dimensional arrays
             auto get_element = [&arr, &idx_vec]() -> T {
                 switch (idx_vec.size()) {
                     case 1:

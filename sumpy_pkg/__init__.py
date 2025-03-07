@@ -1,16 +1,10 @@
-"""
-sumpy - A NumPy-like array library implemented in C++
-"""
-
 import os
 import sys
 
-# Add the directory containing the compiled module to the Python path
 _module_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _module_path not in sys.path:
     sys.path.insert(0, _module_path)
 
-# Also add the build directory to the Python path
 _build_path = os.path.join(_module_path, 'build')
 if os.path.exists(_build_path) and _build_path not in sys.path:
     sys.path.insert(0, _build_path)
@@ -23,7 +17,6 @@ except ImportError:
         "Try running: mkdir -p build && cd build && cmake .. && make"
     )
 
-# Define a more user-friendly interface
 class array:
     """
     A NumPy-like array class that wraps the C++ Sumarray implementation.
@@ -109,8 +102,6 @@ class array:
         else:
             raise TypeError(f"Unsupported dtype: {dtype}")
 
-# Define the double type for consistency with NumPy
 double = float
 
-# Export the array class and the Sumarray classes
 __all__ = ['array', 'Sumarray_int', 'Sumarray_float', 'Sumarray_double', 'double'] 

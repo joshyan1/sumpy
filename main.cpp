@@ -1,6 +1,6 @@
 // main.cpp
 #include <iostream>
-#include "sumpy.hpp" // Make sure this is the name of your header file.
+#include "sumpy.hpp"
 
 int main()
 {

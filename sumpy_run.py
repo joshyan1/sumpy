@@ -40,6 +40,4 @@ def main():
     print()
 
 if __name__ == "__main__":
-    # This will only run when the script is executed directly
-    # When imported, this block is not executed
     main() 
