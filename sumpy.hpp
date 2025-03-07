@@ -7,13 +7,19 @@
 #include <fmt/core.h>
 #include <iostream>
 #include <string>
+#include <utility>
 
 template <typename T>
 class Sumarray
 {
 public:
+
+    /*
+    Constructors
+    */
+
     // Constructor for Sumarray from explicit shape and data vectors.
-    Sumarray(std::vector<int> &shape, std::vector<T> &data)
+    Sumarray(const std::vector<int>& shape, const std::vector<T>& data)
         : shape(shape), data(data)
     {
         // Validate that shape and data match.
@@ -81,6 +87,80 @@ public:
         }
     }
 
+    /*
+    Static utility functions for creating Sumarrays.
+    */
+
+    static Sumarray<T> full(std::vector<int> &shape, T value)
+    {
+        int size = std::accumulate(shape.begin(), shape.end(), 1, std::multiplies<int>());
+        std::vector<T> data(size, value);
+        return Sumarray<T>(shape, data);
+    }
+
+    static Sumarray<T> zeros(std::vector<int> &shape)
+    {
+        return full(shape, static_cast<T>(0));
+    }
+
+    static Sumarray<T> ones(std::vector<int> &shape)
+    {
+        return full(shape, static_cast<T>(1));
+    }
+
+    // Creates an identity matrix of size n.
+    static Sumarray<T> eye(int n)
+    { 
+        std::vector<int> shape = {n, n};
+        std::vector<T> data(n * n, static_cast<T>(0));
+        for (int i = 0; i < n; i++)
+        {
+            data[i * (n + 1)] = static_cast<T>(1);
+        }
+        return Sumarray<T>(shape, data);
+    }
+
+    // Numpy's arange function.
+    static Sumarray<T> arange(T start, T stop, T step = 1)
+    {
+        // Ensure size is an integer
+        int size = static_cast<int>(std::ceil((stop - start) / step));
+        std::vector<int> shape = {size};
+        std::vector<T> data(size);
+
+        for (int i = 0; i < size; i++)
+        {
+            data[i] = start + i * step;
+        }
+        return Sumarray<T>(shape, data);
+    }
+
+    // Numpy's linspace function
+    static std::pair<Sumarray<T>, T> linspace(T start, T stop, int num, bool endpoint = true)
+    {
+
+        if (num < 1)
+        {
+            throw std::invalid_argument("num must be greater than 0");
+        }
+
+        std::vector<T> data(num);
+        std::vector<int> shape = {num};
+        
+        T step = (num == 1) ? 0 : (stop - start) / (endpoint ? (num - 1) : num);
+
+        for (int i = 0; i < num; i++)
+        {
+            data[i] = start + i * step;
+        }
+
+        return {Sumarray<T>(shape, data), step}; 
+    }
+
+    /*
+    Overloaded operators
+    */
+
     // Element access (non-const) using an initializer list for indices.
     T &operator[](std::initializer_list<int> indices)
     {
@@ -123,6 +203,10 @@ public:
         return data[index];
     }
 
+    /*
+    Print methods
+    */
+
     // Print the Sumarray's data in a nested format.
     void print() const
     {
@@ -146,12 +230,21 @@ public:
     }
 
 private:
+
+    /*
+    Member variables
+    */
+
     std::vector<T> data;
     std::vector<int> shape;
     std::vector<int> strides;
     bool c_style; // True if stored in row-major order.
     int size;     // Total number of elements.
     int ndim;     // Number of dimensions.
+
+    /*
+    Private helper functions
+    */
 
     // Helper function: recursively print the array in a nested format.
     void print_recursive(int dim, int offset, int indent) const

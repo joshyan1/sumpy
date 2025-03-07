@@ -1,0 +1,3 @@
+add_executable(test_constructors test_constructors.cpp)
+target_link_libraries(test_constructors PRIVATE sumpy)
+add_test(NAME test_constructors COMMAND test_constructors)

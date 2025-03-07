@@ -11,4 +11,8 @@ target_include_directories(sumpy INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(sumpy INTERFACE fmt::fmt)
 
 add_executable(main main.cpp)
-target_link_libraries(main PRIVATE sumpy) 
+target_link_libraries(main PRIVATE sumpy)
+
+# Enable testing and add your tests.
+enable_testing()
+add_subdirectory(tests)
