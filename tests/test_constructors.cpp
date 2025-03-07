@@ -22,9 +22,8 @@ void test_initializer_list_2D() {
     assert(arr[idx] == 6);
 }
 
-int main() {
+void test_constructors() {
     test_initializer_list_1D();
     test_initializer_list_2D();
     std::cout << "Constructors tests passed.\n";
-    return 0;
 }

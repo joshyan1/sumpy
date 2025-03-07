@@ -25,9 +25,8 @@ void test_out_of_range() {
     assert(caught);
 }
 
-int main() {
+void test_indexing() {
     test_valid_indexing();
     test_out_of_range();
     std::cout << "Indexing tests passed.\n";
-    return 0;
 }

@@ -46,7 +46,7 @@ void test_eye() {
 // Test for arange
 void test_arange() {
     // Example: arange from 0 to 10 with step 2 => 0, 2, 4, 6, 8.
-    
+
     Sumarray<int> arr = Sumarray<int>::arange(0, 10, 2);
     std::initializer_list<int> idx = {0};
     assert(arr[idx] == 0);
@@ -72,11 +72,10 @@ void test_linspace() {
     assert(std::fabs(arr[{4}] - 1.0) < tol);
 }
 
-int main() {
+void test_factory() {
     test_full_zeros_ones();
     test_eye();
     test_arange();
     test_linspace();
     std::cout << "Factory functions tests passed.\n";
-    return 0;
 }

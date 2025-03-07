@@ -25,9 +25,8 @@ void test_print_data() {
     arr.print();
 }
 
-int main() {
+void test_printing() {
     test_print_shape();
     test_print_data();
     std::cout << "Printing tests passed.\n";
-    return 0;
 }
