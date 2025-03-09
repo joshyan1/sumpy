@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include <utility>
-#include <cmath> // Added for std::ceil
+#include <cmath>
 
 template <typename T>
 class Sumarray
@@ -276,6 +276,46 @@ public:
 
         // Return a view that drops the first dimension.
         return Sumarray(newShape, data, newOffset, newStrides);
+    }
+
+    // Range slicing
+    Sumarray operator()(int start, int stop, int step = 1)
+    {
+        int dim_zero = shape[0];
+
+        // Handle negative indices
+        if (start < 0)
+            start += dim_zero;
+        if (stop < 0)
+            stop += dim_zero;
+
+        if (step <= 0)
+        {
+            throw std::invalid_argument("Step must be positive");
+        }
+        if (start < 0 || start >= dim0 || stop < 0 || stop > dim0)
+        {
+            throw std::out_of_range("Slicing indices out of range");
+        }
+
+        int new_size = static_cast<int>((stop - start) / step);
+        if (new_size <= 0)
+        {
+            throw std::invalid_argument("New size must be positive");
+        }
+
+        int new_offset = offset + start * strides[0];
+
+        // Copy the current strides and shape.
+        std::vector<int> new_shape = shape;
+        std::vector<int> new_strides = strides;
+
+        // Update only the first dimension.
+        new_shape[0] = new_size;
+        new_strides[0] *= step;
+
+        // Return a new view (using the view constructor).
+        return Sumarray(new_shape, data, new_offset, new_strides);
     }
 
     /*
