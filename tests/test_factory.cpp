@@ -4,7 +4,8 @@
 #include <iostream>
 
 // Test for full, zeros, ones
-void test_full_zeros_ones() {
+void test_full_zeros_ones()
+{
     std::vector<int> shape = {2, 3};
     Sumarray<int> full_arr = Sumarray<int>::full(shape, 5);
     Sumarray<int> zeros_arr = Sumarray<int>::zeros(shape);
@@ -12,39 +13,45 @@ void test_full_zeros_ones() {
 
     // Test full
     for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 3; ++j) {
+        for (int j = 0; j < 3; ++j)
+        {
             std::initializer_list<int> idx = {i, j};
             assert(full_arr[idx] == 5);
         }
 
     // Test zeros
     for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 3; ++j) {
+        for (int j = 0; j < 3; ++j)
+        {
             std::initializer_list<int> idx = {i, j};
             assert(zeros_arr[idx] == 0);
         }
 
     // Test ones
     for (int i = 0; i < 2; ++i)
-        for (int j = 0; j < 3; ++j) {
+        for (int j = 0; j < 3; ++j)
+        {
             std::initializer_list<int> idx = {i, j};
             assert(ones_arr[idx] == 1);
         }
 }
 
 // Test for eye
-void test_eye() {
+void test_eye()
+{
     int n = 4;
     Sumarray<int> identity = Sumarray<int>::eye(n);
     for (int i = 0; i < n; ++i)
-        for (int j = 0; j < n; ++j) {
+        for (int j = 0; j < n; ++j)
+        {
             std::initializer_list<int> idx = {i, j};
             assert(identity[idx] == (i == j ? 1 : 0));
         }
 }
 
 // Test for arange
-void test_arange() {
+void test_arange()
+{
     // Example: arange from 0 to 10 with step 2 => 0, 2, 4, 6, 8.
 
     Sumarray<int> arr = Sumarray<int>::arange(0, 10, 2);
@@ -61,7 +68,8 @@ void test_arange() {
 }
 
 // Test for linspace.
-void test_linspace() {
+void test_linspace()
+{
     // Example: linspace from 0.0 to 1.0 with 5 elements.
     auto [arr, step] = Sumarray<double>::linspace(0.0, 1.0, 5);
     double tol = 1e-9;
@@ -72,7 +80,8 @@ void test_linspace() {
     assert(std::fabs(arr[{4}] - 1.0) < tol);
 }
 
-void test_factory() {
+void test_factory()
+{
     test_full_zeros_ones();
     test_eye();
     test_arange();

@@ -27,6 +27,7 @@ cd ..
 ## functionalities
 
 ### 1. array creation and initialization
+
 - [x] basic array construction (1d and 2d)
 - [x] zeros(shape)
 - [x] ones(shape)
@@ -36,21 +37,25 @@ cd ..
 - [x] full(shape, value)
 
 ### 2. indexing and slicing
+
 - [x] integer indexing
 - [x] bounds checking
-- [ ] row/column slicing (e.g., arr(0) for first row)
+- [x] row slicing (e.g., arr(0) for first row)
 - [ ] range slicing (start:stop:step)
-- [ ] view-based slicing (no data copying)
+- [x] view-based slicing (no data copying)
+- [x] advanced indexing (arr({1, 7, 3}) to select reorder these rows)
 
 ### 3. basic arithmetic (elementwise)
+
 - [ ] addition (+)
 - [ ] subtraction (-)
-- [ ] multiplication (*)
+- [ ] multiplication (\*)
 - [ ] division (/)
 - [ ] scalar operations
 - [ ] unary operations (-arr, abs(arr))
 
 ### 4. reductions and aggregations
+
 - [ ] sum()
 - [ ] min(), max()
 - [ ] mean()
@@ -58,24 +63,27 @@ cd ..
 - [ ] axis-based reductions (e.g., sum(axis=0))
 
 ### 5. broadcasting
+
 - [ ] shape compatibility checking
 - [ ] broadcasted arithmetic operations
 - [ ] efficient memory handling for broadcasts
 
 ### 6. shape manipulation
+
 - [ ] reshape()
 - [ ] transpose()
 - [ ] flatten()
 - [ ] ravel()
 
 ### 7. memory management
+
 - [ ] shared pointer implementation
 - [ ] view-based operations
 - [ ] copy-on-write optimization
 
 ### 8. more stuff
+
 - [ ] boolean masking
-- [ ] fancy indexing
 - [ ] matrix multiplication (matmul/dot)
 - [ ] simd optimizations
 - [ ] parallel operations

@@ -6,13 +6,15 @@
 namespace py = pybind11;
 
 template <typename T>
-void declare_sumarray(py::module &m, const std::string &typestr) {
+void declare_sumarray(py::module &m, const std::string &typestr)
+{
     using Class = Sumarray<T>;
     std::string pyclass_name = std::string("Sumarray_") + typestr;
-    
+
     py::class_<Class>(m, pyclass_name.c_str())
-        .def(py::init<const std::vector<int>&, const std::vector<T>&>())
-        .def("__getitem__", [](const Class &arr, py::list indices) {
+        .def(py::init<const std::vector<int> &, const std::vector<T> &>())
+        .def("__getitem__", [](const Class &arr, py::list indices)
+             {
             std::vector<int> idx_vec;
             for (auto item : indices) {
                 idx_vec.push_back(py::cast<int>(item));
@@ -34,9 +36,9 @@ void declare_sumarray(py::module &m, const std::string &typestr) {
                 }
             };
             
-            return get_element();
-        })
-        .def("__setitem__", [](Class &arr, py::list indices, T value) {
+            return get_element(); })
+        .def("__setitem__", [](Class &arr, py::list indices, T value)
+             {
             std::vector<int> idx_vec;
             for (auto item : indices) {
                 idx_vec.push_back(py::cast<int>(item));
@@ -62,8 +64,7 @@ void declare_sumarray(py::module &m, const std::string &typestr) {
                 }
             };
             
-            set_element();
-        })
+            set_element(); })
         .def("print", &Class::print)
         .def("print_shape", &Class::print_shape)
         .def_static("zeros", &Class::zeros)
@@ -74,10 +75,11 @@ void declare_sumarray(py::module &m, const std::string &typestr) {
         .def_static("full", &Class::full);
 }
 
-PYBIND11_MODULE(sumpy_core, m) {
+PYBIND11_MODULE(sumpy_core, m)
+{
     m.doc() = "Python bindings for Sumarray C++ library";
-    
+
     declare_sumarray<int>(m, "int");
     declare_sumarray<float>(m, "float");
     declare_sumarray<double>(m, "double");
-} 
+}
